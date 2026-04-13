@@ -20,7 +20,7 @@ from books_api.serializers import BookSerializer
 #         'author': book.author})
 
 class BookList(generics.ListAPIView):
-    queryset = Book.objects.all()
+    queryset = Book.objects.all()  # better option is Book.objects.prefetch_related('authors')
     serializer_class = BookSerializer
 
 class BookViewSet(generics.RetrieveUpdateDestroyAPIView):
