@@ -9,3 +9,13 @@ class Book(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=20)
 
+class Publisher(models.Model):
+    name = models.CharField(max_length=20)
+    established = models.PositiveIntegerField()
+    location = models.CharField(max_length=20)
+
+class Review(models.Model):
+    description = models.TextField(max_length=100)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
+
+

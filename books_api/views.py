@@ -1,13 +1,13 @@
 from django.db.migrations import serializer
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from rest_framework import status, generics
+from rest_framework import status, generics, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from books_api.models import Book
-from books_api.serializers import BookSerializer
+from books_api.models import Book, Publisher
+from books_api.serializers import BookSerializer, PublisherSerializer, PublisherHyperLinkSerializer
 
 
 # def book(request):
@@ -66,3 +66,12 @@ def create_book(request):
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data, status=201)
+
+
+class PublisherViewSet(viewsets.ModelViewSet):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
+
+class PublisherHyperLinkView(generics.ListAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherHyperLinkSerializer
