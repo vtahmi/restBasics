@@ -2,11 +2,14 @@ from django.db.migrations import serializer
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import status, generics, viewsets
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from books_api.models import Book, Publisher
+from books_api.permissions import IsAuthor
 from books_api.serializers import BookSerializer, PublisherSerializer, PublisherHyperLinkSerializer
 
 
@@ -26,6 +29,8 @@ class BookList(generics.ListAPIView):
 class BookViewSet(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthor]
 
 # class BookView(APIView):
 #     serializer = BookSerializer

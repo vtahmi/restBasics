@@ -1,11 +1,6 @@
 py manage.py makemigrations
 py manage.py migrate
 
-
-##run the admin
-py manage.py runserver
-
-
 ##no name
 py manage.py makemigrations --empty main_app
 
@@ -27,7 +22,7 @@ py manage.py showmigrations main_app
 python manage.py showmigrations -l
 
 ##delete migration
-py manage.py migrate pets zero
+py manage.py migrate accounts zero
 
 py caller.py
 
@@ -35,35 +30,26 @@ py manage.py createsuperuser
 
 py manage.py dbshell
 
+##run the admin
 py manage.py runserver
 
 pip install psycopg2-binary
 pip install psycopg2
 
 ###Django moves back to the state of migration 0004 if the last migration is 0005
-python manage.py migrate main_app 0011
+python manage.py migrate posts 0002
 
 python.exe -m pip install --upgrade pip
 
 py manage.py startapp todo_app
-py manage.py startapp books_api
 
 GIT COMMANDS
 
 git init
-git remote add origin https://github.com/vtahmi/restBasics.git
+git remote add origin https://github.com/vtahmi/petStangram.git
 git add .
 git commit -m "Initial commit"
-git push -u origin main
-
-
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/vtahmi/restBasics.git
-git push -u origin main
-
+git push -u origin master
 
 git add .
 git commit -m "Update"
@@ -77,9 +63,24 @@ git stash list
 git stash pop
 
 
+pip freeze > requirements.txt
+pip install -r requirements.txt
 
 
 
+cd "C:\Users\vtahm\OneDrive\Desktop\PYTHON WEB\DJANGOPROJECTS"
+git clone git clone https://github.com/vtahmi/project-name.git
+
+
+cd project-name
+git status
+On branch main
+nothing to commit, working tree clean
+
+Създай виртуална среда
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 
 
 
